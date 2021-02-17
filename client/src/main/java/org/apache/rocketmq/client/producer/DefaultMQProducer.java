@@ -156,8 +156,9 @@ public class DefaultMQProducer extends ClientConfig implements MQProducer {
      * this method before sending or querying messages.
      * </strong>
      * </p>
-     *
      * @throws MQClientException if there is any unexpected error.
+     * 这是启动整个生产者实例的入口，主要负责校验生产者的配置参数是否正确，
+     * 并启动通信通道、各种定时计划任务、Pull服务、Rebalance服务、注册生产者到Broker等操作。
      */
     @Override
     public void start() throws MQClientException {
@@ -177,6 +178,7 @@ public class DefaultMQProducer extends ClientConfig implements MQProducer {
      * @param topic Topic to fetch.
      * @return List of message queues readily to send messages to
      * @throws MQClientException if there is any client error.
+     * 获取一个Topic有哪些Queue。在发送消息、Pull消息时都需要调用。
      */
     @Override
     public List<MessageQueue> fetchPublishMessageQueues(String topic) throws MQClientException {

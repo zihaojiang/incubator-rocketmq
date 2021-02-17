@@ -69,10 +69,12 @@ public class MQClientInstance {
     private final long bootTimestamp = System.currentTimeMillis();
     /**
      * Producer Map
+     * 当前client实例的全部生产者的内部实例。
      */
     private final ConcurrentHashMap<String/* group */, MQProducerInner> producerTable = new ConcurrentHashMap<>();
     /**
      * Consumer Map
+     * 当前client实例的全部消费者的内部实例。
      */
     private final ConcurrentHashMap<String/* group */, MQConsumerInner> consumerTable = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String/* group */, MQAdminExtInner> adminExtTable = new ConcurrentHashMap<>();
@@ -84,6 +86,7 @@ public class MQClientInstance {
     private final MQAdminImpl mQAdminImpl;
     /**
      * Topic 和 Topic路由数据 Map
+     * 当前生产者、消费者中全部Topic的本地缓存路由信息。
      */
     private final ConcurrentHashMap<String/* Topic */, TopicRouteData> topicRouteTable = new ConcurrentHashMap<>();
     private final Lock lockNamesrv = new ReentrantLock();

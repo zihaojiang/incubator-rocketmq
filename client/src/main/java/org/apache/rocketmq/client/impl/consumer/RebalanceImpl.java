@@ -238,6 +238,7 @@ public abstract class RebalanceImpl {
 
     /**
      * 执行分配消费队列
+     * 来感知订阅关系的变化、集群变化等，以达到重新平衡
      *
      * @param isOrder 是否顺序消息
      */
